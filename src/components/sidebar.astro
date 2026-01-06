@@ -24,8 +24,8 @@ import '../styles/global.css'
     .sidebar-container {
         padding-left:1rem;
         padding-right:2rem;
-        min-width: 2.2rem;
-	flex-shrink: 0;
+        min-width: 200px;
+        flex-shrink: 0;
     }
 
     .internal-container {
@@ -33,6 +33,21 @@ import '../styles/global.css'
         display: flex;
         gap: 0.2rem;
         flex-direction: column;
+    }
+
+    @media (max-width: 768px) {
+        .sidebar-container {
+            min-width: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-bottom: 1rem;
+        }
+        .internal-container {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 0.5rem;
+        }
     }
 
 </style>

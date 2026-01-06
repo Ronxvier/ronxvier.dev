@@ -18,6 +18,7 @@ const { title } = Astro.props;
     }
     .content {
         margin-top: 3rem;
+        flex: 1;
     }
     h1 {
         color: #d5c4a1;
@@ -25,5 +26,19 @@ const { title } = Astro.props;
 
     .snawg {
         padding-right: 3.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .layout-container {
+            flex-direction: column;
+        }
+        .content {
+            margin-top: 1.5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .snawg {
+            padding-right: 0;
+        }
     }
 </style>
