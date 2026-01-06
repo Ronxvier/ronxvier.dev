@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
+
+html {
+    background-color: #282828;
+}
+
+body {
+    color: #ebdbb2;
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.signature-container{
+    color: #8ec07c;
+    padding-top: 1rem;
+    font-family: "Libre Baskerville", serif;
+    font-optical-sizing: auto;
+    font-style: Italic;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.logo-container{
+    color: #a89984;
+    padding-top: .2rem;
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.logo-container:hover{
+    color: #d5c4a1;
+}
+
+.external-links{
+    color: #458588;
+    text-decoration: none;
+}
+.external-links:hover{
+    color: #83a598;
+}

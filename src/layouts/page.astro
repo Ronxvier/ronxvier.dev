@@ -1,0 +1,28 @@
+---
+import Sidebar from "../components/sidebar.astro";
+const { title } = Astro.props;
+---
+<div class="layout-container">
+    <Sidebar></Sidebar>
+    <div class="content">
+        <h1>{title}</h1>
+        <div class="snawg"><slot/></div>
+    </div>
+</div>
+
+<style>
+    .layout-container {
+        display: flex;
+        flex-direction: row;
+    }
+    .content {
+        margin-top: 3rem;
+    }
+    h1 {
+        color: #d5c4a1;
+    }
+
+    .snawg {
+        padding-right: 6rem;
+    }
+</style>

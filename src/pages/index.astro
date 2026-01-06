@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import '../styles/global.css'
+import Page from "../layouts/page.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Page title="Home">
+    This site is a work in progress. In the meantime, check out my projects!
+    <br>
+    You can also find me on:
+    <br>
+    <div>
+    <a href="https://www.github.com/Ronxvier" target="_blank" class="external-links">[Github]</a>
+    <a href="https://www.linkedin.com/in/ronel-xavier-a0a574178/"target="_blank" class="external-links">[LinkedIn]</a>
+    <a href="https://www.medium.com/@ronxvier"target="_blank" class="external-links">[Medium]</a>
+    <a href="https://strava.app.link/CJsXBgVKmVb"target="_blank" class="external-links">[Strava]</a>
+    <a href="https://www.instagram.com/ronxvier"target="_blank" class="external-links">[Instagram]</a>
+    <a href="https://ultrarunning.com/calendar/runner/view/Ronel-Xavier-23be9a98-fab8-11ef-beeb-8e80a249bae3"target="_blank" class="external-links">[Ultra Running Magazine]</a>
+    </div>
+</Page>
+
+
