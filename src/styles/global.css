@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    color: #ebdbb2;
+    color: #d5c4a1;
     font-family: "JetBrains Mono", monospace;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -48,12 +48,12 @@ body {
     background-color: #504945;
 }
 .internal-links {
-    color: #b16286;
+    color: #d65d0e;
     font-weight: bold;
     font-size: 1.1rem;
     text-decoration: none;
 }
 .internal-links:hover {
-    color: #d3869b;
     background-color: #504945;
+    color: #fe8019;
 }
