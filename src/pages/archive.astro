@@ -1,6 +1,29 @@
 ---
-
+import '../styles/global.css'
+import Page from "../layouts/page.astro";
 ---
-<div>
-    🚧 Under Construction. 🚧
-</div>
+<Page title="Archive">
+    I put you on
+    <br>
+    <br>
+    <div class="listContainer">
+    <li><a href="/archive-bin/podcasts">[podcasts]</a></li>
+    <li><a href="/archive-bin/music">[music]</a></li>
+    </div>
+</Page>
+<style>
+    a {
+        color: #d79921;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #fabd2f;
+        background-color: #504945;
+    }
+    .listContainer {
+        display: flex;
+        flex-direction:column;
+        gap: .5rem;
+    }
+</style>
