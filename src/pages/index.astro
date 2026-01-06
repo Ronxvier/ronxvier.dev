@@ -5,10 +5,10 @@ import Page from "../layouts/page.astro";
 
 <Page title="Home">
     This site is a work in progress. In the meantime, check out my projects!
-    <br>
+    <div class="padded">
     You can also find me on:
-    <br>
-    <div>
+    </div>
+    <div >
     <a href="https://www.github.com/Ronxvier" target="_blank" class="external-links">[Github]</a>
     <a href="https://www.linkedin.com/in/ronel-xavier-a0a574178/"target="_blank" class="external-links">[LinkedIn]</a>
     <a href="https://www.medium.com/@ronxvier"target="_blank" class="external-links">[Medium]</a>
@@ -19,3 +19,9 @@ import Page from "../layouts/page.astro";
 </Page>
 
 
+<style>
+    .padded{
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
+    }
+</style>
