@@ -20,7 +20,7 @@ body {
     font-optical-sizing: auto;
     font-style: Italic;
     font-weight: 400;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
 }
 
 .logo-container{
@@ -35,12 +35,25 @@ body {
 }
 .logo-container:hover{
     color: #d5c4a1;
+    background-color: #504945;
 }
 
 .external-links{
-    color: #458588;
+    color: #98971a;
+    font-weight: bold;
     text-decoration: none;
 }
 .external-links:hover{
-    color: #83a598;
+    color: #b8bb26;
+    background-color: #504945;
+}
+.internal-links {
+    color: #b16286;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+.internal-links:hover {
+    color: #d3869b;
+    background-color: #504945;
 }

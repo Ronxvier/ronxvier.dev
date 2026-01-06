@@ -4,11 +4,11 @@ import Page from "../layouts/page.astro";
 ---
 
 <Page title="Home">
-    This site is a work in progress. In the meantime, check out my projects!
+    This site is a <span style="color:#fb4934; font-weight:bold;">work in progress.</span> In the meantime, check out my <a href="./projects.astro" class="internal-links" style="font-size: 1rem;">[projects!]</a>
     <div class="padded">
     You can also find me on:
     </div>
-    <div >
+    <div style="display:flex; flex-direction:column">
     <a href="https://www.github.com/Ronxvier" target="_blank" class="external-links">[Github]</a>
     <a href="https://www.linkedin.com/in/ronel-xavier-a0a574178/"target="_blank" class="external-links">[LinkedIn]</a>
     <a href="https://www.medium.com/@ronxvier"target="_blank" class="external-links">[Medium]</a>
@@ -21,7 +21,7 @@ import Page from "../layouts/page.astro";
 
 <style>
     .padded{
-        padding-top: 0.5rem;
+        padding-top: 1rem;
         padding-bottom: 0.2rem;
     }
 </style>
