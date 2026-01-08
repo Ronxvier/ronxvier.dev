@@ -70,3 +70,14 @@ body {
     background-color: #504945;
     color: #fe8019;
 }
+
+.internal-links-page {
+    color: #458588;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+.internal-links-page:hover {
+    background-color: #504945;
+    color: #83a598;
+}
