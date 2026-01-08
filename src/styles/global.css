@@ -52,12 +52,12 @@ body {
 }
 
 .external-links{
-    color: #98971a;
+    color: #689d6a;
     font-weight: bold;
     text-decoration: none;
 }
 .external-links:hover{
-    color: #b8bb26;
+    color: #8ec07c;
     background-color: #504945;
 }
 .internal-links {
