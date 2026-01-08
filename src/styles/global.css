@@ -72,12 +72,12 @@ body {
 }
 
 .internal-links-page {
-    color: #458588;
+    color: #98971a;
     font-weight: bold;
     font-size: 1.1rem;
     text-decoration: none;
 }
 .internal-links-page:hover {
     background-color: #504945;
-    color: #83a598;
+    color: #b8bb26;
 }
