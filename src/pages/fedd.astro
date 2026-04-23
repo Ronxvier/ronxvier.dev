@@ -1,0 +1,26 @@
+---
+import '../styles/global.css'
+import Page from "../layouts/page.astro";
+---
+<Page title="NCSU FEDD: Animatronic Billy">
+<p>
+        As part of NC State's First-Year Engineering Design Development (FEDD) program, I worked in a group of five to build a life-sized animatronic replica of Billy the Puppet from the <em>Saw</em> franchise. My contributions focused on circuit design and programming: wiring the servo motor controls, integrating sensors, and writing the firmware that drove Billy's movements. The result was a fully functional animatronic capable of synchronized eye and jaw movements.
+</p>
+<p></p>
+<video controls width="50%">
+    <source src="/FEDD1.mov" type="video/quicktime" />
+    <source src="/FEDD1.mov" type="video/mp4" />
+    Your browser does not support the video tag.
+</video>
+<p></p>
+<img src="/FEDD2.jpeg" alt="FEDD project photo 1" style="width:50%; margin-bottom:1rem;" />
+<img src="/FEDD3.jpeg" alt="FEDD project photo 2" style="width:50%;" />
+</Page>
+<style>
+    p {
+        color: #e0def4;
+    }
+    video, img {
+        border-radius: 4px;
+    }
+</style>
