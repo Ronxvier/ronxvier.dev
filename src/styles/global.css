@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
 
 html {
-    background-color: #191724;
+    background-color: #1F1F28;
 }
 
 body {
-    color: #e0def4;
+    color: #DCD7BA;
     font-family: "JetBrains Mono", monospace;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -14,7 +14,7 @@ body {
 }
 
 .signature-container{
-    color: #ebbcba;
+    color: #E6C384;
     padding-top: 1rem;
     font-family: "Libre Baskerville", serif;
     font-optical-sizing: auto;
@@ -37,7 +37,7 @@ body {
 }
 
 .logo-container{
-    color: #908caa;
+    color: #87A67A;
     padding-top: .2rem;
     font-family: "JetBrains Mono", monospace;
     font-optical-sizing: auto;
@@ -47,37 +47,37 @@ body {
     text-decoration: none;
 }
 .logo-container:hover{
-    color: #e0def4;
-    background-color: #403d52;
+    color: #5C7A52;
+    background-color: #2A2A37;
 }
 
 .external-links{
-    color: #31748f;
+    color: #7AA89F;
     font-weight: bold;
     text-decoration: none;
 }
 .external-links:hover{
-    color: #9ccfd8;
-    background-color: #403d52;
+    color: #4D7A72;
+    background-color: #2A2A37;
 }
 .internal-links {
-    color: #eb6f92;
+    color: #E46876;
     font-weight: bold;
     font-size: 1.1rem;
     text-decoration: none;
 }
 .internal-links:hover {
-    background-color: #403d52;
-    color: #ebbcba;
+    background-color: #2A2A37;
+    color: #C34043;
 }
 
 .internal-links-page {
-    color: #f6c177;
+    color: #E6C384;
     font-weight: bold;
     font-size: 1.1rem;
     text-decoration: none;
 }
 .internal-links-page:hover {
-    background-color: #403d52;
-    color: #ebbcba;
+    background-color: #2A2A37;
+    color: #C0A36E;
 }
