@@ -1,30 +1,213 @@
 ---
 import '../styles/global.css'
-import Page from "../layouts/page.astro";
 ---
 
-<Page title="Home">
-    Welcome to my dev portfolio! I'm going to be using this website to keep track of my projects and write small <a href="./archive" class="internal-links-page" style="font-size: 1rem;">[blog]</a> sections. Recently I've been working in NC State's ECE department as an Undergraduate Research Assistant for Wong Research Group. Outside of the computer stuff I've been really into climbing and am starting to get back into running.
-    <br>
-    <br>
-    This site is a <span style="color:#C4714E; font-weight:bold;">work in progress.</span> In the meantime, check out my <a href="./projects" class="internal-links-page" style="font-size: 1rem;">[projects!]</a>
-    <div class="padded">
-    You can also find me on:
-    </div>
-    <div style="display:flex; flex-direction:column">
-    <a href="https://www.github.com/Ronxvier" target="_blank" class="external-links">[Github]</a>
-    <a href="https://www.linkedin.com/in/ronel-xavier-a0a574178/"target="_blank" class="external-links">[LinkedIn]</a>
-    <a href="https://www.medium.com/@ronxvier"target="_blank" class="external-links">[Medium]</a>
-    <a href="https://strava.app.link/CJsXBgVKmVb"target="_blank" class="external-links">[Strava]</a>
-    <a href="https://www.instagram.com/ronxvier"target="_blank" class="external-links">[Instagram]</a>
-    <a href="https://ultrarunning.com/calendar/runner/view/Ronel-Xavier-23be9a98-fab8-11ef-beeb-8e80a249bae3"target="_blank" class="external-links">[Ultra Running Magazine]</a>
-    </div>
-</Page>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<div class="layout-container">
+    <aside class="sidebar">
+        <div class="signature-container">Ronel Xavier</div>
+        <a href="#home" class="logo-container nav-link">[ronxvier]</a>
+        <nav class="internal-container">
+            <a href="#projects" class="internal-links nav-link">[projects]</a>
+            <a href="#archive" class="internal-links nav-link">[archive]</a>
+            <a href="#about" class="internal-links nav-link">[about]</a>
+        </nav>
+    </aside>
+
+    <main class="content" id="main-content">
+        <section id="home" class="section">
+            <h1>Home</h1>
+            Welcome to my dev portfolio! I'm going to be using this website to keep track of my projects and write small <a href="#archive" class="internal-links-page nav-link" style="font-size: 1rem;">[blog]</a> sections. Recently I've been working in NC State's ECE department as an Undergraduate Research Assistant for Wong Research Group. Outside of the computer stuff I've been really into climbing and am starting to get back into running.
+            <br><br>
+            This site is a <span style="color:#C4714E; font-weight:bold;">work in progress.</span> In the meantime, check out my <a href="#projects" class="internal-links-page nav-link" style="font-size: 1rem;">[projects!]</a>
+            <div class="padded">You can also find me on:</div>
+            <div style="display:flex; flex-direction:column">
+                <a href="https://www.github.com/Ronxvier" target="_blank" class="external-links">[Github]</a>
+                <a href="https://www.linkedin.com/in/ronel-xavier-a0a574178/" target="_blank" class="external-links">[LinkedIn]</a>
+                <a href="https://www.medium.com/@ronxvier" target="_blank" class="external-links">[Medium]</a>
+                <a href="https://strava.app.link/CJsXBgVKmVb" target="_blank" class="external-links">[Strava]</a>
+                <a href="https://www.instagram.com/ronxvier" target="_blank" class="external-links">[Instagram]</a>
+                <a href="https://ultrarunning.com/calendar/runner/view/Ronel-Xavier-23be9a98-fab8-11ef-beeb-8e80a249bae3" target="_blank" class="external-links">[Ultra Running Magazine]</a>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h1>Projects</h1>
+            <ul class="project-list">
+                <li><b>Research</b>: I've been working at <a href="https://ncsu-wong.org/research.html" target="_blank" class="projectlink">[Wong Research Group]</a> recently. Unfortunately I'm unable to share any of the work I've been doing, as a lot of it involves proprietary research code. Hopefully I'll be able to talk about some of it in a publication soon!</li>
+                <li><a href="https://github.com/Ronxvier/VimMotions" target="_blank" class="projectlink">[VimMotions]</a>: Chrome Extension that allows for Vim-style keybindings for efficient text navigation and editing in browser inputs, with 1,500+ installs on the Chrome Webstore.</li>
+                <li><a href="https://github.com/Ronxvier/Algorithms" target="_blank" class="projectlink">[Algorithms]</a>: Implementations, notes, and documentation of Data Structures and Algorithms covered by Robert Sedgewick's Algorithms 1 course, all written in Java.</li>
+                <li><a href="https://github.com/Ronxvier/Interpreters" target="_blank" class="projectlink">[Interpreters]</a>: Notes and interpreter implementations following Robert Nystrom's Crafting Interpreters, written in Java.</li>
+                <li><a href="https://github.com/EthicalFlipper/Catfish" target="_blank" class="projectlink">[CatFish]</a>: AI catfishing detection for Tinder. Built for Hack_NCState 2026.</li>
+                <li><a href="https://www.medium.com/@ronxvier" target="_blank" class="projectlink">[Medium]</a>: I write articles about computer stuff.</li>
+                <li><a href="https://github.com/Ronxavier/Shali" target="_blank" class="projectlink">[Shali]</a>: CLI notes app with AES-GCM-SIV encryption, built in Rust.</li>
+                <li><a href="https://github.com/Ronxvier/ymir.nvim" target="_blank" class="projectlink">[ymir.nvim]</a>: A snowy mountain sunset theme for Neovim.</li>
+                <li><a href="https://github.com/Ronxvier/dent.nvim" target="_blank" class="projectlink">[dent.nvim]</a>: Small indentation helper for Neovim.</li>
+                <li><a href="https://github.com/Ronxavier/mocha.nvim" target="_blank" class="projectlink">[mocha.nvim]</a>: Java quality of life changes for Neovim.</li>
+                <li><a href="https://github.com/Ronxavier/flick" target="_blank" class="projectlink">[flick]</a>: Lightweight AI-powered terminal assistant for natural language project scaffolding and coding, created before the release of gemini-cli.</li>
+                <li><a href="https://github.com/Ronxvier/MiloCam" target="_blank" class="projectlink">[MiloCam]</a>: facebook/detr-resnet-50 powered Schnawg-Cam.</li>
+                <li><b>NCSU Grand Challenges</b>: Proposed a plan for a community-led urban infrastructure reporting app, winning first place in the NC State's Grand Challenges of Engineering Poster competition.</li>
+                <li><a href="/fedd" class="projectlink">[NCSU FEDD]</a>: Worked in a group of 5 to create an animatronic Billy from the Jigsaw Franchise. Worked on Circuit design and programming.</li>
+            </ul>
+            <p>Find more projects on Github!</p>
+        </section>
+
+        <section id="archive" class="section">
+            <h1>Archive</h1>
+            I put you on
+            <br><br>
+            <div class="list-container">
+                <li><a href="/archive-bin/podcasts" class="archivelink">[podcasts]</a></li>
+                <li><a href="/archive-bin/music" class="archivelink">[music]</a></li>
+                <li><a href="/archive-bin/books" class="archivelink">[books]</a></li>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h1>About</h1>
+            Under construction. Come back Soon!
+        </section>
+    </main>
+</div>
+
+<script>
+    const content = document.getElementById('main-content');
+
+    if (content) {
+        content.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
+        content.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+    }
+
+    document.querySelectorAll('a.nav-link').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const hash = link.getAttribute('href');
+            if (!hash || !hash.startsWith('#')) return;
+            e.preventDefault();
+            const target = document.querySelector(hash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+<style is:global>
+    html, body {
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+    }
+</style>
 
 <style>
-    .padded{
+    .layout-container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .sidebar {
+        height: 100vh;
+        padding-left: 1rem;
+        padding-right: 2rem;
+        min-width: 200px;
+        flex-shrink: 0;
+    }
+
+    .internal-container {
+        padding-top: 1rem;
+        display: flex;
+        gap: 0.2rem;
+        flex-direction: column;
+    }
+
+    .content {
+        flex: 1;
+        overflow-y: scroll;
+        height: 100vh;
+        scrollbar-width: none;
+    }
+    .content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .section {
+        min-height: 100vh;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-right: 3.5rem;
+    }
+
+    .padded {
         padding-top: 1rem;
         padding-bottom: 0.2rem;
+    }
+
+    .project-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding-left: 1.2rem;
+    }
+
+    .list-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .projectlink {
+        text-decoration: none;
+        font-weight: bold;
+        color: #C4714E;
+    }
+    .projectlink:hover {
+        background-color: #E8E1D8;
+        color: #A05535;
+    }
+
+    .archivelink {
+        color: #C4714E;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .archivelink:hover {
+        color: #A05535;
+        background-color: #E8E1D8;
+    }
+
+    @media (max-width: 768px) {
+        html, body {
+            overflow: auto;
+            height: auto;
+        }
+        .layout-container {
+            flex-direction: column;
+            height: auto;
+        }
+        .sidebar {
+            height: auto;
+            min-width: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-bottom: 1rem;
+        }
+        .internal-container {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .content {
+            overflow-y: visible;
+            height: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .section {
+            padding-right: 0;
+            min-height: auto;
+            padding-bottom: 3rem;
+        }
     }
 </style>
