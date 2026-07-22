@@ -119,6 +119,22 @@
   trackerBox.style.width = `${BOXwd}px`;
   trackerBox.style.height = `${BOXht}px`;
 
+  // the browser skips mouseenter if the cursor is already sitting here on load,
+  // so fading in is driven off the first move instead of the enter alone
+  const overlay = [hires, trackerBox, coordLabel];
+  let visible = false;
+
+  function show() {
+    if (visible) return;
+    visible = true;
+    animate(overlay, { opacity: 1, duration: 100, ease: 'outQuad' });
+  }
+
+  function hide() {
+    visible = false;
+    animate(overlay, { opacity: 0, duration: 500, ease: 'outBack' });
+  }
+
   reveal.addEventListener('mousemove', (e) => {
     const r = reveal.getBoundingClientRect();
     const x = e.clientX - r.left;
@@ -159,29 +175,11 @@ coordLabel.textContent = `${clamped.toFixed(4)}°N`; // fix to 4 decimal
       ease: 'outBack', // need to experiment with other curves
       delay: 7,
     });
+
+    show();
   });
 
-  reveal.addEventListener('mouseleave', () => {
-    animate(hires, {
-      opacity: 0,
-      duration: 500,
-      ease: 'outBack',
-    });
-    animate(trackerBox, {
-      opacity: 0,
-      duration: 500,
-      ease: 'outBack',
-    });
-    animate(coordLabel, {
-      opacity: 0,
-      duration: 500,
-      ease: 'outBack',
-    });
-  });
-reveal.addEventListener('mouseenter', () => {
+  reveal.addEventListener('mouseleave', hide);
   // needs to re-enter @ opacity 1 after fadeout
-  animate(hires, { opacity: 1, duration: 100, ease: 'outQuad' });
-  animate(trackerBox, { opacity: 1, duration: 100, ease: 'outQuad' });
-  animate(coordLabel, { opacity: 1, duration: 100, ease: 'outQuad' });
-});
+  reveal.addEventListener('mouseenter', show);
 </script>
