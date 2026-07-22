@@ -15,7 +15,16 @@
 </div>
 
 <style>
-  .reveal { position: relative; cursor: crosshair; width: 100%; aspect-ratio: 16 / 9; }
+  .reveal {
+    position: relative;
+    cursor: crosshair;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* keep the tracker box + coord label inside the image on every edge */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 14px rgba(58, 42, 33, 0.18);
+  }
   .reveal img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 15px;}
   .hires {
     /* start fully clipped away (empty box) */
