@@ -81,3 +81,12 @@ body {
     background-color: #E8E1D8;
     color: #A05535;
 }
+
+/* list rows that link somewhere highlight the full line, like the sidebar.
+   inline links inside prose keep the text-only highlight. */
+li:has(a):hover {
+    background-color: #E8E1D8;
+}
+li:has(a):hover a {
+    color: #A05535;
+}
