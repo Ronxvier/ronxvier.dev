@@ -14,15 +14,21 @@ import Reveal from '../components/revealimg.astro'
             <a href="#archive" class="internal-links nav-link">[archive]</a>
             <a href="#about" class="internal-links nav-link">[about]</a>
         <br>
+            <div class="badges">
             <div style="display: flex;">
                 <a href="https://88x31.lol" target="_blank">
-                  <img src="https://88x31.lol/counter9.gif"
+                  <img src="https://88x31.lol/counter7.gif"
                     alt="88x31 - Visitor counter" width="88" height="31" />
                 </a>
 
                 <a href="https://neovim.io" target="_blank">
             <img src="https://88x31.nl/gifs/neovim.gif" height="31" width="88">
                 </a>
+            </div>
+            <div style="display: flex;">
+                <img src="https://88x31.nl/gifs/dc.png" alt="DC" height="31" width="88">
+                <img src="https://88x31.nl/gifs/video_game_cheats_tips_hints_codes.gif" alt="Video game cheats, tips, hints, codes" height="31" width="88">
+            </div>
             </div>
         </nav>
     </aside>
@@ -140,6 +146,10 @@ import Reveal from '../components/revealimg.astro'
         flex-direction: column;
     }
 
+    .badges img {
+        display: block;
+    }
+
     .content {
         flex: 1;
         overflow-y: scroll;
@@ -178,21 +188,21 @@ import Reveal from '../components/revealimg.astro'
     .projectlink {
         text-decoration: none;
         font-weight: bold;
-        color: #C4714E;
+        color: var(--color-accent);
     }
     .projectlink:hover {
-        background-color: #E8E1D8;
-        color: #A05535;
+        background-color: var(--color-hover-bg);
+        color: var(--color-accent-hover);
     }
 
     .archivelink {
-        color: #C4714E;
+        color: var(--color-accent);
         font-weight: bold;
         text-decoration: none;
     }
     .archivelink:hover {
-        color: #A05535;
-        background-color: #E8E1D8;
+        color: var(--color-accent-hover);
+        background-color: var(--color-hover-bg);
     }
 
     @media (max-width: 768px) {
@@ -207,8 +217,8 @@ import Reveal from '../components/revealimg.astro'
             height: auto;
             min-width: auto;
             padding: 0.75rem 1rem;
-            background-color: #F2EDE5;
-            border-bottom: 1px solid #E0D8CE;
+            background-color: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
         }
         .signature-container {
             display: none;
