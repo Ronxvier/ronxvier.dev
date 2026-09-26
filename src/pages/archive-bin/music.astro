@@ -1,70 +1,11 @@
 ---
-import '../../styles/global.css'
-import Page from '../../layouts/page.astro';
+import Article from "../../layouts/Article.astro";
+import EntryList from "../../components/EntryList.astro";
+import { archive } from "../../data/site";
+
+const section = archive.find((a) => a.name === "Music")!;
 ---
-<Page title="Music">
-    <h3 style="margin-top: 0;">mmm... Spotify premium...</h3>
-    <li><a href="https://www.youtube.com/watch?v=ZRvoBmkxomM&list=RDZRvoBmkxomM&start_radio=1" target="_blank">
-        [Champagne Coast]</a>
-        - Blood Orange: "Finishing eight or nine? - Tell me, what's the perfect time? - I told you I'll be waiting - Hiding from the rainfall - So, tell me, what's the joy of giving if you're never pleased? On my last strength against you - Baby, tell me what you need"
-    </li>
-    <p></p>
-    <li><a href="https://www.youtube.com/watch?v=ZVgHPSyEIqk" target="_blank">
-        [Let Down]</a>
-        - Radiohead: "Legs are going, don't get sentimental - It always ends up drivel - One day, I am gonna grow wings - A chemical reaction - Hysterical and useless"
-    </li>
-    <p></p>
 
-    <li><a href="https://www.youtube.com/watch?v=Ec08db2hP10&list=RDEc08db2hP10&start_radio=1" target="_blank">
-        [End of Beginning]</a>
-        - Djo: "And when I'm back in Chicago, I feel it - Another version of me, I was in it - I wave goodbye to the end of beginning"
-    </li>
-    <p></p>
-    <li><a href="https://www.youtube.com/watch?v=Ar48yzjn1PE&list=RDAr48yzjn1PE&start_radio=1" target="_blank">
-        [Sparks]</a>
-        - Coldplay: "Did I drive you away? - I know what you'll say - You say, "Oh, sing one we know" - But I promise you this - I'll always look out for you - Yeah, that's what I'll do"
-    </li>
-    <p></p>
-    <li><a href="https://www.youtube.com/watch?v=wp43OdtAAkM&list=RDwp43OdtAAkM&start_radio=1" target="_blank">
-        [Running Up That Hill]</a>
-        - Kate Bush: "Oh, come on, baby - Oh, come on, darlin' - Let me steal this moment from you now - Oh, come on, angel - Come on, come on, darlin' - Let's exchange the experience"
-    </li>
-    <p></p>
-    <li><a href="https://www.youtube.com/watch?v=xnP7qKxwzjg" target="_blank">
-        [Dracula]</a>
-        - Tame Impala: "In the end, I hope it's you and me - In the darkness, I would never leave (I won't leave her) - We both saw this moment coming from afar - Now here we are"
-    </li>
-    <p></p>
-    <li><a href="https://youtu.be/Fk9FSZo2geg?si=JaYzMMwYuvjTKZMQ" target="_blank">
-        [The Best]</a>
-        - Conan Gray: "Maybe it's all in my mind - But swear if I saw you tonight - We could make peace with it, not have to sleep with it - Haunting me all of the time"
-    </li>
-    <p></p>
-    <li><a href="https://youtu.be/IqzfU9T-UEM?si=rJLJU7nnoRjXkkN1" target="_blank">
-        [4Me 4Me]</a>
-        - Malcom Todd: "I just want you touching my face - Look at my eyes, can you not see? - I just want you, look at my face - Look in my eyes are you gon' stay?"
-    </li>
-    <p></p>
-    <li><a href="https://youtu.be/aM9zaRKYppo?si=qinOy65BtVV_jBbR" target="_blank">
-        [You Owe Me]</a>
-        - Malcom Todd: "What do you know? - My one and only - Has places to go - Somewhere you don't know me - I'm falling again - I'm losing it slowly - But this isn't the end - The end that you owe me"
-    </li>
-    <p></p>
-    <li><a href="https://youtu.be/E7FU_mqhFGk?si=wWHnCOfKBgcumwWL" target="_blank">
-        [Neverender]</a>
-        - Justice, Tame Impala: "Because I remember - The hardest are the times I don't forget - Neverender - And all I was about to be - 'Cause I remember - The hardest are the times I don't forget"
-    </li>
-
-</Page>
-
-<style>
-    a {
-        color: var(--color-accent);
-        font-weight: bold;
-        text-decoration: none;
-    }
-    a:hover {
-        background-color: var(--color-hover-bg);
-        color: var(--color-accent-hover);
-    }
-</style>
+<Article title="Music" kicker="Archive" kickerHref="/archive" deck={section.deck}>
+    <EntryList entries={section.entries} style="verse" />
+</Article>

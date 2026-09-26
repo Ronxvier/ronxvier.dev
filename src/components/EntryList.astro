@@ -1,0 +1,72 @@
+---
+// One archive list (podcasts, music, or books). `quote` sets the text as a
+// pull quote; `verse` sets lyric lines one per line.
+import type { Entry } from "../data/site";
+
+const { entries, style = "review" } = Astro.props as { entries: Entry[]; style?: "review" | "quote" | "verse" };
+---
+
+<ol class:list={["entries", style]}>
+    {entries.map((e) => (
+        <li class="entry">
+            <h2 class="hed entry-hed">
+                <a href={e.href} target="_blank" rel="noopener">{e.title}</a>
+            </h2>
+            <p class="entry-by">{e.by}</p>
+            {style === "review" && <p class="entry-text">{e.text}</p>}
+            {style === "quote" && <blockquote class="entry-quote">{e.text}</blockquote>}
+            {style === "verse" && e.lines && (
+                <blockquote class="entry-verse">
+                    {e.lines.map((l) => <span>{l}</span>)}
+                </blockquote>
+            )}
+            {e.note && <p class="entry-note">{e.note}</p>}
+        </li>
+    ))}
+</ol>
+
+<style>
+    .entries {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .entry {
+        padding: 1.75rem 0;
+        border-bottom: 1px solid var(--rule);
+    }
+    .entry:first-child {
+        padding-top: 0;
+    }
+    .entry-hed {
+        font-size: 1.5rem;
+    }
+    .entry-by {
+        margin: 0.6rem 0 0;
+        font-family: var(--sans);
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--muted);
+    }
+    .entry-text {
+        margin: 0.75rem 0 0;
+    }
+    .entry-quote,
+    .entry-verse {
+        margin: 1rem 0 0;
+        padding-left: 1.25rem;
+        border-left: 2px solid var(--rule-heavy);
+        font-style: italic;
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+    .entry-verse span {
+        display: block;
+    }
+    .entry-note {
+        margin: 0.75rem 0 0;
+        font-family: var(--sans);
+        font-size: 0.8125rem;
+        color: var(--muted);
+    }
+</style>

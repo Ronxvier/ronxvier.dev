@@ -1,244 +1,158 @@
 ---
-import '../styles/global.css'
-import Reveal from '../components/revealimg.astro'
+import Base from "../layouts/Base.astro";
+import { research, socials } from "../data/site";
 ---
-<!-- script src="/scripts/neko.js" data-autostart> Honestly, I'm probably not gonna add this back. </script -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="layout-container">
-    <aside class="sidebar">
-        <div class="signature-container">Ronel Xavier</div>
-        <a href="#home" class="logo-container nav-link">[ronxvier]</a>
-        <nav class="internal-container">
-            <a href="#projects" class="internal-links nav-link">[projects]</a>
-            <a href="#archive" class="internal-links nav-link">[archive]</a>
-            <a href="#about" class="internal-links nav-link">[about]</a>
-        <br>
-            <div class="badges">
-            <div style="display: flex;">
-                <a href="https://88x31.lol" target="_blank">
-                  <img src="https://88x31.lol/counter7.gif"
-                    alt="88x31 - Visitor counter" width="88" height="31" />
-                </a>
+<Base front>
+    <div class="wrap">
+        <!-- lead story + right rail -->
+        <section class="front" aria-label="Top stories">
+            <article class="lead">
+                <figure>
+                    <img
+                        src="/img/mtns.jpg"
+                        width="1600"
+                        height="1066"
+                        alt="mountains"
+                    />
+                    <figcaption class="caption">
+                        Photo I took at Mt. Bierstadt in Colorado!
+                        <!--
+                        <span class="credit">
+                            <a
+                                href="https://unsplash.com/@alschim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                                target="_blank"
+                                rel="noopener">Alexander Schimmeck</a
+                            > for Unsplash
+                        </span>
+                    -->
+                    </figcaption>
+                </figure>
+                <h1 class="hed lead-hed">Welcome to my dev portfolio</h1>
+                <p class="lead-deck">
+                    I use this website to keep track of my projects and write small
+                    <a href="/archive">blog</a> sections.
+                </p>
+                <p class="byline">By Ronel Xavier</p>
+            </article>
 
-                <a href="https://neovim.io" target="_blank">
-            <img src="https://88x31.nl/gifs/neovim.gif" height="31" width="88">
-                </a>
-            </div>
-            <div style="display: flex;">
-                <img src="https://88x31.nl/gifs/dc.png" alt="DC" height="31" width="88">
-                <img src="https://88x31.nl/gifs/video_game_cheats_tips_hints_codes.gif" alt="Video game cheats, tips, hints, codes" height="31" width="88">
-            </div>
-            </div>
-        </nav>
-    </aside>
+            <aside class="rail">
+                <article class="rail-story">
+                    <span class="kicker">{research.kind}</span>
+                    <h2 class="hed rail-hed">
+                        <a href={research.href} target="_blank" rel="noopener">{research.name}</a>
+                    </h2>
+                    <p class="summary">{research.summary}</p>
+                    <p class="summary">{research.note}</p>
+                </article>
 
-    <main class="content" id="main-content">
-        <section id="home" class="section">
-            <Reveal></Reveal>
-<div class="padded">Big thanks to the <a href="https://www.mhacks.org/" target="_blank" class="external-links">[MHacks]</a> developers for this design idea, and <a href="https://unsplash.com/@alschim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" class="external-links">[Alexander Schimmeck]</a> for this awesome photo of Zhangjiajie National Forest Park! 
-                <br />
-                <br />
-                Stalk me on:</div>
-            <div style="display:flex; flex-direction:column">
-                <a href="https://www.github.com/Ronxvier" target="_blank" class="external-links">[Github]</a>
-                <a href="https://www.linkedin.com/in/ronel-xavier-a0a574178/" target="_blank" class="external-links">[LinkedIn]</a>
-                <a href="https://www.medium.com/@ronxvier" target="_blank" class="external-links">[Medium]</a>
-                <a href="https://strava.app.link/CJsXBgVKmVb" target="_blank" class="external-links">[Strava]</a>
-                <a href="https://www.instagram.com/ronxvier" target="_blank" class="external-links">[Instagram]</a>
-                <a href="https://ultrarunning.com/calendar/runner/view/Ronel-Xavier-23be9a98-fab8-11ef-beeb-8e80a249bae3" target="_blank" class="external-links">[Ultra Running Magazine]</a>
-            </div>
+                <article class="rail-story">
+                    <h2 class="hed rail-subhed">Stalk me on</h2>
+                    <ul class="elsewhere">
+                        {socials.map((s) => (
+                            <li><a href={s.href} target="_blank" rel="noopener">{s.name}</a></li>
+                        ))}
+                    </ul>
+                </article>
+            </aside>
         </section>
 
-        <section id="projects" class="section">
-            <h1>Projects</h1>
-            <ul class="project-list">
-                <li><b>Research</b>: I've been working at <a href="https://ncsu-wong.org/research.html" target="_blank" class="projectlink">[Wong Research Group]</a> recently. Unfortunately I'm unable to share any of the work I've been doing, as a lot of it involves proprietary research code. Hopefully I'll be able to talk about some of it in a publication soon!</li>
-                <li><a href="https://github.com/Ronxvier/VimMotions" target="_blank" class="projectlink">[VimMotions]</a>: Chrome Extension that allows for Vim-style keybindings for efficient text navigation and editing in browser inputs, with 1,500+ installs on the Chrome Webstore.</li>
-                <li><a href="https://github.com/Ronxvier/Algorithms" target="_blank" class="projectlink">[Algorithms]</a>: Implementations, notes, and documentation of Data Structures and Algorithms covered by Robert Sedgewick's Algorithms 1 course, all written in Java.</li>
-                <li><a href="https://github.com/Ronxvier/Interpreters" target="_blank" class="projectlink">[Interpreters]</a>: Notes and interpreter implementations following Robert Nystrom's Crafting Interpreters, written in Java.</li>
-                <li><a href="https://github.com/EthicalFlipper/Catfish" target="_blank" class="projectlink">[CatFish]</a>: AI catfishing detection for Tinder. Built for Hack_NCState 2026.</li>
-                <li><a href="https://www.medium.com/@ronxvier" target="_blank" class="projectlink">[Medium]</a>: I write articles about computer stuff.</li>
-                <li><a href="https://github.com/Ronxavier/Shali" target="_blank" class="projectlink">[Shali]</a>: CLI notes app with AES-GCM-SIV encryption, built in Rust.</li>
-                <li><a href="https://github.com/Ronxvier/ymir.nvim" target="_blank" class="projectlink">[ymir.nvim]</a>: A snowy mountain sunset theme for Neovim.</li>
-                <li><a href="https://github.com/Ronxvier/dent.nvim" target="_blank" class="projectlink">[dent.nvim]</a>: Small indentation helper for Neovim.</li>
-                <li><a href="https://github.com/Ronxavier/mocha.nvim" target="_blank" class="projectlink">[mocha.nvim]</a>: Java quality of life changes for Neovim.</li>
-                <li><a href="https://github.com/Ronxavier/flick" target="_blank" class="projectlink">[flick]</a>: Lightweight AI-powered terminal assistant for natural language project scaffolding and coding, created before the release of gemini-cli.</li>
-                <li><a href="https://github.com/Ronxvier/MiloCam" target="_blank" class="projectlink">[MiloCam]</a>: facebook/detr-resnet-50 powered Schnawg-Cam.</li>
-                <li><b>NCSU Grand Challenges</b>: Proposed a plan for a community-led urban infrastructure reporting app, winning first place in the NC State's Grand Challenges of Engineering Poster competition.</li>
-                <li><a href="/fedd" class="projectlink">[NCSU FEDD]</a>: Worked in a group of 5 to create an animatronic Billy from the Jigsaw Franchise. Worked on Circuit design and programming.</li>
-            </ul>
-            <p>Find more projects on Github!</p>
+        <!-- about -->
+        <section class="block about" aria-labelledby="about-head">
+            <header class="section-head">
+                <h2 id="about-head"><a href="/about">About</a></h2>
+            </header>
+            <p class="summary">Under construction. Come back soon!</p>
         </section>
-
-        <section id="archive" class="section">
-            <h1>Archive</h1>
-            I put you on
-            <br><br>
-            <div class="list-container">
-                <li><a href="/archive-bin/podcasts" class="archivelink">[podcasts]</a></li>
-                <li><a href="/archive-bin/music" class="archivelink">[music]</a></li>
-                <li><a href="/archive-bin/books" class="archivelink">[books]</a></li>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <h1>About</h1>
-            Under construction. Come back Soon!
-        </section>
-    </main>
-</div>
-
-<script>
-    const content = document.getElementById('main-content');
-
-    if (content && window.innerWidth > 768) {
-        content.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
-        content.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
-    }
-
-    document.querySelectorAll('a.nav-link').forEach((link) => {
-        link.addEventListener('click', (e) => {
-            const hash = link.getAttribute('href');
-            if (!hash || !hash.startsWith('#')) return;
-            e.preventDefault();
-            const target = document.querySelector(hash);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-</script>
-
-<style is:global>
-    html, body {
-        height: 100%;
-        overflow: hidden;
-        margin: 0;
-    }
-    @media (max-width: 768px) {
-        html, body {
-            height: auto;
-            overflow: auto;
-        }
-    }
-</style>
+    </div>
+</Base>
 
 <style>
-    .layout-container {
-        display: flex;
-        flex-direction: row;
-        height: 100vh;
+    .front {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        gap: 0 2rem;
+        padding: 1.5rem 0 2.5rem;
     }
 
-    .sidebar {
-        height: 100vh;
-        padding-left: 1rem;
-        padding-right: 2rem;
-        min-width: 200px;
-        flex-shrink: 0;
+    .lead figure {
+        margin: 0;
+    }
+    .lead img {
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
     }
 
-    .internal-container {
+    .lead-hed {
+        margin-top: 1.25rem;
+        font-size: clamp(2rem, 4.2vw, 3.1rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+    }
+    .lead-deck {
+        margin: 0.75rem 0 0.9rem;
+        max-width: 36rem;
+        font-size: 1.3rem;
+        line-height: 1.4;
+        color: var(--ink-soft);
+    }
+    .lead .byline {
+        margin: 0;
+    }
+
+    .rail {
+        border-left: 1px solid var(--rule);
+        padding-left: 2rem;
+    }
+    .rail-story + .rail-story {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--rule);
+    }
+    .rail-hed {
+        font-size: 1.6rem;
+    }
+    .rail-subhed {
+        font-size: 1.125rem;
+    }
+
+    .elsewhere {
+        margin: 0.6rem 0 0;
+        padding: 0;
+        list-style: none;
+        font-family: var(--sans);
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    .elsewhere li {
+        padding: 0.4rem 0;
+        border-bottom: 1px solid var(--rule);
+    }
+    .elsewhere li:last-child {
+        border-bottom: 0;
+    }
+
+    .block {
         padding-top: 1rem;
-        display: flex;
-        gap: 0.2rem;
-        flex-direction: column;
+        padding-bottom: 2rem;
     }
 
-    .badges img {
-        display: block;
+    .about .summary {
+        margin: 0;
     }
 
-    .content {
-        flex: 1;
-        overflow-y: scroll;
-        height: 100vh;
-        scrollbar-width: none;
-    }
-    .content::-webkit-scrollbar {
-        display: none;
-    }
-
-    .section {
-        min-height: 100vh;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        padding-right: 3.5rem;
-    }
-
-    .padded {
-        padding-top: 1rem;
-        padding-bottom: 0.2rem;
-    }
-
-    .project-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        padding-left: 1.2rem;
-    }
-
-    .list-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .projectlink {
-        text-decoration: none;
-        font-weight: bold;
-        color: var(--color-accent);
-    }
-    .projectlink:hover {
-        background-color: var(--color-hover-bg);
-        color: var(--color-accent-hover);
-    }
-
-    .archivelink {
-        color: var(--color-accent);
-        font-weight: bold;
-        text-decoration: none;
-    }
-    .archivelink:hover {
-        color: var(--color-accent-hover);
-        background-color: var(--color-hover-bg);
-    }
-
-    @media (max-width: 768px) {
-        .layout-container {
-            flex-direction: column;
-            height: auto;
+    @media (max-width: 760px) {
+        .front {
+            grid-template-columns: 1fr;
         }
-        .sidebar {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            height: auto;
-            min-width: auto;
-            padding: 0.75rem 1rem;
-            background-color: var(--color-bg);
-            border-bottom: 1px solid var(--color-border);
-        }
-        .signature-container {
-            display: none;
-        }
-        .internal-container {
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            padding-top: 0;
-        }
-        .content {
-            overflow-y: visible;
-            height: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        .section {
-            padding-right: 0;
-            min-height: 100vh;
-            padding-bottom: 3rem;
+        .rail {
+            border-left: 0;
+            padding-left: 0;
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--rule);
         }
     }
 </style>
