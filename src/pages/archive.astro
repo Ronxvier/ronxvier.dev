@@ -1,30 +1,70 @@
 ---
-import '../styles/global.css'
-import Page from "../layouts/page.astro";
+import Article from "../layouts/Article.astro";
+import { archive } from "../data/site";
 ---
-<Page title="Archive">
-    I put you on
-    <br>
-    <br>
-    <div class="listContainer">
-    <li><a href="/archive-bin/podcasts">[podcasts]</a></li>
-    <li><a href="/archive-bin/music">[music]</a></li>
-        <li><a href="/archive-bin/books">[books]</a></li>
-    </div>
-</Page>
+
+<Article title="Archive" deck="I put you on" byline={false} wide>
+    <ul class="sections">
+        {archive.map((a) => (
+            <li class="section">
+                <div>
+                    <h2 class="hed section-hed"><a href={a.href}>{a.name}</a></h2>
+                    <p class="summary">{a.deck}</p>
+                </div>
+                <ol class="titles">
+                    {a.entries.map((e) => (
+                        <li><a href={e.href} target="_blank" rel="noopener">{e.title}</a><span>{e.by}</span></li>
+                    ))}
+                </ol>
+            </li>
+        ))}
+    </ul>
+</Article>
+
 <style>
-    a {
-        color: var(--color-accent);
-        font-weight: bold;
-        text-decoration: none;
+    .sections {
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
-    a:hover {
-        color: var(--color-accent-hover);
-        background-color: var(--color-hover-bg);
+    .section {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: 1rem 2rem;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--rule);
     }
-    .listContainer {
-        display: flex;
-        flex-direction:column;
-        gap: .5rem;
+    .section:first-child {
+        padding-top: 0;
+    }
+    .section-hed {
+        font-size: 1.9rem;
+    }
+    .titles {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    .titles li {
+        padding: 0.35rem 0;
+        border-bottom: 1px solid var(--rule);
+    }
+    .titles li:last-child {
+        border-bottom: 0;
+    }
+    .titles span {
+        margin-left: 0.6rem;
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--muted);
+        white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+        .section {
+            grid-template-columns: 1fr;
+        }
     }
 </style>

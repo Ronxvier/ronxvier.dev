@@ -1,0 +1,145 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Masthead from "../components/Masthead.astro";
+import { socials } from "../data/site";
+
+const { title, description = "Ronel Xavier's dev portfolio: projects, research, and an archive of podcasts, music, and books.", front = false } = Astro.props;
+const pageTitle = title ? `${title} | Ronel Xavier` : "Ronel Xavier";
+
+// Between inner pages the compact masthead holds still and the page body
+// slides toward the section being opened (direction comes from section order
+// in the script below, not browser history). Going to or from the front page
+// the mastheads differ too much to morph, so the whole page crossfades.
+// The old page is gone before the new one arrives, so the two never overlap.
+const easeOut = "cubic-bezier(0.4, 0, 1, 1)";
+const easeIn = "cubic-bezier(0, 0, 0.2, 1)";
+const leave = (name: string) => ({ name, duration: "140ms", easing: easeOut, fillMode: "both" });
+const arrive = (name: string) => ({ name, duration: "240ms", delay: "130ms", easing: easeIn, fillMode: "both" });
+const pageTurn = {
+    forwards: { old: leave("page-out-left"), new: arrive("page-in-right") },
+    backwards: { old: leave("page-out-right"), new: arrive("page-in-left") },
+};
+const sheetFade = {
+    forwards: { old: leave("page-fade-out"), new: arrive("page-fade-in") },
+    backwards: { old: leave("page-fade-out"), new: arrive("page-fade-in") },
+};
+---
+
+<!doctype html>
+<html lang="en" transition:animate={sheetFade}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{pageTitle}</title>
+        <meta name="description" content={description} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=UnifrakturMaguntia&display=swap"
+        />
+        <ClientRouter />
+    </head>
+    <body>
+        <a class="skip" href="#main">Skip to content</a>
+        <Masthead compact={!front} />
+        <main id="main" transition:name="page" transition:animate={pageTurn}>
+            <slot />
+        </main>
+        <footer class="colophon">
+            <div class="wrap">
+                <a href="/" class="colophon-name">Ronel Xavier</a>
+                <ul>
+                    {socials.map((s) => (
+                        <li><a href={s.href} target="_blank" rel="noopener">{s.name}</a></li>
+                    ))}
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>
+
+<script>
+    // Home, Projects, Archive, About read left to right. Pages inside a
+    // section (FEDD, the archive lists) sit just right of their section.
+    const order = ["/", "/projects", "/archive", "/about"];
+    const rank = (url: URL) => {
+        const path = url.pathname.replace(/\/$/, "") || "/";
+        if (path === "/fedd") return 1.5;
+        if (path.startsWith("/archive-bin")) return 2.5;
+        const i = order.indexOf(path);
+        return i === -1 ? 0 : i;
+    };
+
+    const WHOLE = "vt-whole";
+    let whole = false;
+
+    document.addEventListener("astro:before-preparation", (e) => {
+        const from = rank(e.from);
+        const to = rank(e.to);
+        if (from !== to) e.direction = to > from ? "forward" : "back";
+        // unname the masthead and body on both sides so only the page fades
+        whole = from === 0 || to === 0;
+        document.documentElement.classList.toggle(WHOLE, whole);
+    });
+
+    document.addEventListener("astro:before-swap", (e) => {
+        e.newDocument.documentElement.classList.toggle(WHOLE, whole);
+        // page-load fires before the new page is captured, so wait for the end
+        e.viewTransition.finished.finally(() => document.documentElement.classList.remove(WHOLE));
+    });
+</script>
+
+<style>
+    .skip {
+        text-decoration: none;
+        position: absolute;
+        left: -999px;
+        top: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--sans);
+        font-size: 0.875rem;
+        z-index: 10;
+    }
+    .skip:focus {
+        left: 0.5rem;
+    }
+
+    main {
+        padding-bottom: 4rem;
+    }
+
+    .colophon {
+        border-top: 1px solid var(--rule);
+        padding: 1.5rem 0 2.5rem;
+    }
+    .colophon .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem 2rem;
+    }
+    .colophon-name {
+        text-decoration: none;
+        font-family: var(--blackletter);
+        font-size: 1.75rem;
+        line-height: 1;
+    }
+    .colophon ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 1.25rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-family: var(--sans);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--muted);
+    }
+</style>
