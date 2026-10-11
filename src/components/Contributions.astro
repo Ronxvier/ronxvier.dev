@@ -1,0 +1,186 @@
+---
+import { github } from "../data/site";
+
+// Empty year drawn at build time so the page holds its shape until the
+// script fills it in.
+const WEEKS = 53;
+const RECENT = 26;
+const weeks = Array.from({ length: WEEKS }, (_, i) => i);
+const days = Array.from({ length: 7 });
+---
+
+<section class="gh" aria-label="GitHub contributions" data-contributions data-user={github.user}>
+    <div class="gh-bubble">
+        <div class="gh-weeks" data-weeks>
+            {weeks.map((w) => (
+                <div class:list={["gh-week", { "gh-early": w < WEEKS - RECENT }]}>
+                    {days.map(() => <span class="gh-cell" data-level="0" />)}
+                </div>
+            ))}
+        </div>
+        <span class="gh-tip" role="tooltip" hidden></span>
+    </div>
+</section>
+
+<script>
+    type Day = { date: string; count: number; level: number };
+    type Year = { total: { lastYear: number }; contributions: Day[] };
+
+    const RECENT = 26;
+    const cache = new Map<string, Promise<Year>>();
+    const load = (user: string) => {
+        if (!cache.has(user)) {
+            const url = `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(user)}?y=last`;
+            cache.set(
+                user,
+                fetch(url).then((r) => {
+                    if (!r.ok) throw new Error(`contributions: ${r.status}`);
+                    return r.json();
+                }),
+            );
+        }
+        return cache.get(user)!;
+    };
+
+    const utc = (date: string) => new Date(`${date}T00:00:00Z`);
+    const dayName = new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+    const plural = (n: number) => `${n.toLocaleString("en")} contribution${n === 1 ? "" : "s"}`;
+
+    function draw(root: HTMLElement, year: Year) {
+        const grid = root.querySelector<HTMLElement>("[data-weeks]");
+        const all = year.contributions;
+        if (!grid || !all.length) return;
+
+        // weeks run Sunday to Saturday; pad the first so the rows line up
+        const cells: (Day | null)[] = [...Array(utc(all[0].date).getUTCDay()).fill(null), ...all];
+        const columns: (Day | null)[][] = [];
+        for (let i = 0; i < cells.length; i += 7) columns.push(cells.slice(i, i + 7));
+
+        const built = columns.map((col, i) => {
+            const week = document.createElement("div");
+            week.className = "gh-week";
+            if (i < columns.length - RECENT) week.classList.add("gh-early");
+
+            for (const day of col) {
+                const cell = document.createElement("span");
+                cell.className = "gh-cell";
+                if (day) {
+                    cell.dataset.level = String(day.level);
+                    cell.dataset.tip = `${plural(day.count)} on ${dayName.format(utc(day.date))}`;
+                } else {
+                    cell.classList.add("gh-blank");
+                }
+                week.append(cell);
+            }
+            return week;
+        });
+
+        grid.replaceChildren(...built);
+        grid.setAttribute("role", "img");
+        grid.setAttribute("aria-label", `${plural(year.total.lastYear)} in the last year`);
+    }
+
+    // One label follows the pointer from square to square, held inside the
+    // bubble so it never hangs off the edge of the page.
+    function hover(root: HTMLElement) {
+        const bubble = root.querySelector<HTMLElement>(".gh-bubble");
+        const grid = root.querySelector<HTMLElement>("[data-weeks]");
+        const tip = root.querySelector<HTMLElement>(".gh-tip");
+        if (!bubble || !grid || !tip) return;
+
+        grid.addEventListener("pointerover", (e) => {
+            const cell = (e.target as HTMLElement).closest<HTMLElement>(".gh-cell[data-tip]");
+            if (!cell) return void (tip.hidden = true);
+            tip.textContent = cell.dataset.tip!;
+            tip.hidden = false;
+            const box = bubble.getBoundingClientRect();
+            const at = cell.getBoundingClientRect();
+            const half = tip.offsetWidth / 2;
+            const x = at.left + at.width / 2 - box.left;
+            tip.style.left = `${Math.min(Math.max(x, half), box.width - half)}px`;
+            tip.style.top = `${at.top - box.top}px`;
+        });
+        grid.addEventListener("pointerleave", () => (tip.hidden = true));
+    }
+
+    // page-load fires on first load and after every client-side navigation
+    document.addEventListener("astro:page-load", () => {
+        document.querySelectorAll<HTMLElement>("[data-contributions]").forEach((root) => {
+            hover(root);
+            load(root.dataset.user!)
+                .then((year) => draw(root, year))
+                // an empty year would read as no activity, so show nothing
+                .catch(() => (root.hidden = true));
+        });
+    });
+</script>
+
+<!-- global because the script builds the cells, which scoped styles miss -->
+<style is:global>
+    .gh {
+        --gh-gap: clamp(2px, 0.3vw, 4px);
+        /* with the next section's own 1rem, matches the 1.5rem above */
+        padding-bottom: 0.5rem;
+    }
+    .gh-bubble {
+        position: relative;
+        padding: clamp(0.75rem, 2vw, 1.25rem);
+        border-radius: 14px;
+        background: color-mix(in srgb, var(--ink) 4%, var(--paper));
+    }
+    .gh-tip {
+        position: absolute;
+        z-index: 2;
+        transform: translate(-50%, calc(-100% - 6px));
+        padding: 0.3rem 0.55rem;
+        border-radius: 4px;
+        background: var(--ink);
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        color: var(--paper);
+        pointer-events: none;
+    }
+
+    .gh-weeks {
+        display: flex;
+        gap: var(--gh-gap);
+    }
+    .gh-week {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: var(--gh-gap);
+        min-width: 0;
+    }
+
+    /* GitHub's five steps, tinted from the page colour up to the accent */
+    .gh-cell {
+        aspect-ratio: 1;
+        border-radius: 2px;
+        background: var(--rule);
+    }
+    .gh-cell[data-level="1"] {
+        background: color-mix(in srgb, var(--accent) 40%, var(--paper));
+    }
+    .gh-cell[data-level="2"] {
+        background: color-mix(in srgb, var(--accent) 60%, var(--paper));
+    }
+    .gh-cell[data-level="3"] {
+        background: color-mix(in srgb, var(--accent) 80%, var(--paper));
+    }
+    .gh-cell[data-level="4"] {
+        background: var(--accent);
+    }
+    .gh-cell.gh-blank {
+        background: none;
+    }
+
+    /* a year of columns is too fine on a phone, so keep the recent half */
+    @media (max-width: 640px) {
+        .gh-early {
+            display: none;
+        }
+    }
+</style>

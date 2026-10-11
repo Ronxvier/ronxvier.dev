@@ -45,6 +45,9 @@ export const paintings: Painting[] = [
     },
 ];
 
+// Front page contribution graph.
+export const github = { user: "Ronxvier" };
+
 export const research = {
     name: "Research",
     kind: "Wong Research Group",
@@ -77,7 +80,7 @@ export const projects: Project[] = [
         kind: "Java, Python",
         href: "https://github.com/Ronxvier/neetcode-submissions",
         summary:
-            "I keep a few DSA repos including notes and code from online courses I've taken and problems I've done. Check them out: `ronxvier/neetcode-submissions`, `ronxvier/algorithms`, `ronxvier/grokking-algorithms`.",
+            "I keep a few DSA repos containing notes and code from online courses I've taken and problems I've done. Check them out: `ronxvier/neetcode-submissions`, `ronxvier/algorithms`, `ronxvier/grokking-algorithms`.",
     },
     {
         name: "Contributions",
