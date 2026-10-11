@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Contributions from "../components/Contributions.astro";
 import Gallery from "../components/Gallery.astro";
 import { research, socials } from "../data/site";
 ---
@@ -39,6 +40,8 @@ import { research, socials } from "../data/site";
             </aside>
         </section>
 
+        <Contributions />
+
         <!-- about -->
         <section class="block about" aria-labelledby="about-head">
             <header class="section-head">
@@ -54,7 +57,7 @@ import { research, socials } from "../data/site";
         display: grid;
         grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
         gap: 0 2rem;
-        padding: 1.5rem 0 2.5rem;
+        padding: 1.5rem 0;
     }
 
     .lead-hed {
