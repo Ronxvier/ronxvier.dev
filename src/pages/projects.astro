@@ -3,6 +3,10 @@ import Article from "../layouts/Article.astro";
 import { research, projects } from "../data/site";
 
 const external = (href?: string) => !!href && href.startsWith("http");
+// odd pieces sat between backticks
+const pieces = (text: string) => text.split("`");
+// a code span shaped like owner/repo links to that repo
+const repo = (text: string) => /^[\w.-]+\/[\w.-]+$/.test(text);
 ---
 
 <Article title="Projects" byline={false} wide>
@@ -27,7 +31,13 @@ const external = (href?: string) => !!href && href.startsWith("http");
                             p.name
                         )}
                     </h2>
-                    <p class="summary">{p.summary}</p>
+                    <p class="summary">{pieces(p.summary).map((t, i) => (
+                            i % 2 === 0 ? t : repo(t) ? (
+                                <a href={`https://github.com/${t}`} target="_blank" rel="noopener"><code>{t}</code></a>
+                            ) : (
+                                <code>{t}</code>
+                            )
+                        ))}</p>
                 </div>
             </li>
         ))}
