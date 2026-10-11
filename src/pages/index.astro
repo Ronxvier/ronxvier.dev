@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import Gallery from "../components/Gallery.astro";
 import { research, socials } from "../data/site";
 ---
 
@@ -8,25 +9,8 @@ import { research, socials } from "../data/site";
         <!-- lead story + right rail -->
         <section class="front" aria-label="Top stories">
             <article class="lead">
-                <figure>
-                    <img
-                        src="/img/camille/TAG.png"
-                        width="1600"
-                        height="1066"
-                        alt="painting"
-                    />
-                    <figcaption class="caption">
-                        The Artist's Garden at Eragny, 1898  -
-                        <span class="credit">
-                            <a
-                                href="https://www.nga.gov/artists/1791-camille-pissarro"
-                                target="_blank"
-                                rel="noopener">Camille Pissarro</a
-                            >
-                        </span>
-                    </figcaption>
-                </figure>
-                <h1 class="hed lead-hed">Welcome to my dev portfolio</h1>
+                <Gallery />
+                <h1 class="hed lead-hed">Old Man Yells at Cloud</h1>
                 <p class="lead-deck">
                     I use this website to keep track of my projects and write small
                     <a href="/archive">blog</a> sections.
@@ -71,15 +55,6 @@ import { research, socials } from "../data/site";
         grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
         gap: 0 2rem;
         padding: 1.5rem 0 2.5rem;
-    }
-
-    .lead figure {
-        margin: 0;
-    }
-    .lead img {
-        width: 100%;
-        aspect-ratio: 3 / 2;
-        object-fit: cover;
     }
 
     .lead-hed {

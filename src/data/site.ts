@@ -13,6 +13,38 @@ export const socials = [
     },
 ];
 
+export type Painting = { src: string; width: number; height: number; title: string; year: number; alt: string };
+
+// Front page gallery. The files are 1600px copies of the originals beside them.
+export const painter = { name: "Camille Pissarro", href: "https://www.nga.gov/artists/1791-camille-pissarro" };
+
+export const paintings: Painting[] = [
+    {
+        src: "/img/camille/artists_garden_eragny_1600.jpg",
+        width: 1600,
+        height: 1273,
+        title: "The Artist's Garden at Eragny",
+        year: 1898,
+        alt: "A woman bends over a vegetable bed in a flowering garden, a slate-roofed house behind the trees.",
+    },
+    {
+        src: "/img/camille/place_du_carrousel_1600.jpg",
+        width: 1600,
+        height: 1326,
+        title: "Place du Carrousel, Paris",
+        year: 1900,
+        alt: "The Louvre seen from above across a sunlit square, with green trees and small figures in the foreground.",
+    },
+    {
+        src: "/img/camille/louvre_afternoon_rainy_weather_1600.jpg",
+        width: 1600,
+        height: 1285,
+        title: "The Louvre, Afternoon, Rainy Weather",
+        year: 1900,
+        alt: "Boats on the Seine under a grey sky, the Louvre on the far bank and walkers on a wet quay.",
+    },
+];
+
 export const research = {
     name: "Research",
     kind: "Wong Research Group",
@@ -22,12 +54,13 @@ export const research = {
     note: "Unfortunately I'm unable to talk about the details, but I'll be able to share more once our work is published.",
 };
 
+// Backticks in a summary set that span as code; owner/repo spans also link to GitHub.
 export type Project = { name: string; kind: string; href?: string; summary: string };
 
 export const projects: Project[] = [
     {
         name: "VimMotions",
-        kind: "Chrome extension",
+        kind: "JavaScript",
         href: "https://github.com/Ronxvier/VimMotions",
         summary:
             "Chrome Extension that allows for Vim-style keybindings for efficient text navigation and editing in browser inputs, with 1,700+ installs on the Chrome Webstore.",
@@ -37,21 +70,21 @@ export const projects: Project[] = [
         kind: "Python",
         href: "https://github.com/Ronxvier/nanograd",
         summary:
-            "Backpropagation engine written from scratch, implementation of Andrej Karpathy's micrograd.",
+            "My “deep learning library from scratch” pet-project. Started as an implementation of Andrej Karpathy's micrograd, has since grown as I implement more optimizations.",
     },
     {
         name: "Algorithms",
-        kind: "Java",
-        href: "https://github.com/Ronxvier/Algorithms",
+        kind: "Java, Python",
+        href: "https://github.com/Ronxvier/neetcode-submissions",
         summary:
-            "My implementations, notes, and documentation of Data Structures and Algorithms covered by Robert Sedgewick's Algorithms 1 course, all written in Java.",
+            "I keep a few DSA repos including notes and code from online courses I've taken and problems I've done. Check them out: `ronxvier/neetcode-submissions`, `ronxvier/algorithms`, `ronxvier/grokking-algorithms`.",
     },
     {
-        name: "Grokking Algorithms",
-        kind: "Python",
-        href: "https://github.com/Ronxvier/Grokking_Algorithms",
+        name: "Contributions",
+        kind: "Python, C++",
+        href: "https://github.com/Ronxvier/",
         summary:
-            "My notes and implementations for Grokking Algorithms, by Aditya Bhargava.",
+            "Terrorizing maintainers with my open source contributions. I've contributed to `llvm/llvm-project`, and `neuralinkcorp/datarepo`.",
     },
 
     {
@@ -63,7 +96,7 @@ export const projects: Project[] = [
     },
     {
         name: "CatFish",
-        kind: "Hack_NCState 2026",
+        kind: "TypeScript, Python",
         href: "https://github.com/EthicalFlipper/Catfish",
         summary: "AI catfishing detection for Tinder. Built for Hack_NCState 2026.",
     },
@@ -99,14 +132,14 @@ export const projects: Project[] = [
     },
     {
         name: "flick",
-        kind: "Python/Linux",
+        kind: "Python, Linux",
         href: "https://github.com/Ronxvier/flick",
         summary:
             "Lightweight AI-powered terminal assistant for natural language project scaffolding and coding, created before the release of gemini-cli.",
     },
     {
         name: "MiloCam",
-        kind: "Computer vision",
+        kind: "Python, OpenCV",
         href: "https://github.com/Ronxvier/MiloCam",
         summary: "facebook/detr-resnet-50 powered Schnawg-Cam.",
     },

@@ -16,6 +16,7 @@
     --serif: "Newsreader", "Georgia", "Times New Roman", serif;
     --sans: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
     --blackletter: "UnifrakturMaguntia", "Old English Text MT", serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
     --page: 72rem;
     --gutter: clamp(1rem, 3vw, 2rem);
@@ -112,6 +113,15 @@ a:hover {
     font-size: 1rem;
     line-height: 1.45;
     color: var(--ink-soft);
+}
+
+code {
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    background: #eeeee9;
+    font-family: var(--mono);
+    font-size: 0.85em;
+    color: var(--ink);
 }
 
 .byline {
